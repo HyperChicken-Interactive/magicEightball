@@ -29,6 +29,52 @@ func findArea(length l: Int, width w: Int) ->Int{
 findArea(length: 10, width: 20)
 //TADA!
 
+//We can capture the function returns like:
+let exampleReturnValue:Int = findArea(length: 12, width: 15)
+
+//DEFAULT VALUES && Tuples!
+
+func carpetCostCalculator(area area: Int, color: String = "dark white") ->(Double, String){
+    //For this exersize, we're going to assume the following values.
+    //We also are going to make area a double and assign it to dbArea.
+    let dbArea: Double=Double(area)
+    //PRICES:
+    //Grey = 1.0
+    //Dark White = 2.0
+    //Light black = 4.0
+    var price: Double
+    
+    switch color{
+        case "Grey", "Gray":
+            price = dbArea
+        case "dw", "dark white", "But It's still grey asshat!":
+            price = dbArea * 2.0
+        case "lb", "light black", "Still ******* GRAY!!!":
+            price = dbArea * 4.0
+    default:
+        price = 1.0
+        print(price * dbArea)
+    }
+    
+    return (price, color)
+}
+
+let (carpetCost: Int, carpetColor: String) = carpetCostCalculator(area: exampleReturnValue)
+
+/*
+NOTES:
+* All function parameters are treated as constants
+* You can assign multiple variables a la golang
+    to a function with multiple return types.
+*/
+
+
+
+
+
+
+
+
 
 
 
