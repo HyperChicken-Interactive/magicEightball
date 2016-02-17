@@ -3,6 +3,7 @@
     <pages>
         <page name='structs'/>
         <page name='Classes'/>
+        <page name='ValueReference'/>
         <page name='Treehouse bits'/>
     </pages>
 </playground>

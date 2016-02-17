@@ -73,6 +73,54 @@ let coords:Location = Location(latitude: 10.0, longitude: 10.0)
 
 let someBusiness:Business = Business(loc: coords, name: "AND HIS NAME IS JOHN CENA")
 
+//
+
+class Vehicle {
+    var numberOfDoors: Int
+    var numberOfWheels: Int
+    
+    init(withDoors doors: Int, andWheels wheels: Int) {
+        self.numberOfDoors = doors
+        self.numberOfWheels = wheels
+    }
+}
+
+class Car:Vehicle {
+    var numberOfSeats:Int = 4
+    override init(withDoors doors: Int, andWheels wheels: Int){
+        super.init(withDoors: doors, andWheels: wheels)
+    }
+}
+
+let someCar:Car = Car(withDoors: 4, andWheels: 4)
+
+//
+
+class PersonClass {
+    let firstName: String
+    let lastName: String
+    
+    init(firstName: String, lastName: String) {
+        self.firstName = firstName
+        self.lastName = lastName
+    }
+    
+    func getFullName() -> String {
+        return "\(firstName) \(lastName)"
+    }
+}
+
+
+class Doctor: PersonClass {
+    override func getFullName() -> String {
+        return "Dr. \(lastName)"
+    }
+}
+
+let someDoctor:Doctor = Doctor(firstName: "Sam", lastName: "Smith")
+
+
+
 
 
 
