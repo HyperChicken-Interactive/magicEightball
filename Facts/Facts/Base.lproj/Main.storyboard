@@ -18,13 +18,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your question" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="soZ-2J-Qyc">
-                                <rect key="frame" x="71" y="319" width="228" height="30"/>
+                                <rect key="frame" x="73" y="319" width="228" height="30"/>
                                 <color key="tintColor" red="0.39607843139999999" green="0.4823529412" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                 <connections>
                                     <action selector="eightBallProcess" destination="BYZ-38-t0r" eventType="editingDidEnd" id="pSS-68-PrC"/>
+                                    <action selector="getEightBallQuestion" destination="BYZ-38-t0r" eventType="touchUpOutside" id="2DC-Z6-8rb"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Eightball says:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wu8-wa-pBK">
@@ -40,14 +41,15 @@
                                 <color key="highlightedColor" red="0.0" green="1" blue="0.10423062895741353" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6z4-Y7-qVp">
-                                <rect key="frame" x="141" y="357" width="88" height="30"/>
+                                <rect key="frame" x="119" y="357" width="137" height="30"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
                                 <state key="normal" title="Ask eightball">
                                     <color key="titleColor" red="0.86274509799999999" green="0.1960784314" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="submitEightBallQuestion" destination="BYZ-38-t0r" eventType="touchUpInside" id="TRy-ka-iHz"/>
+                                </connections>
                             </button>
-                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qxI-pg-uPj">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                            </adBannerView>
                         </subviews>
                         <color key="backgroundColor" red="0.027450980392156862" green="0.21176470588235294" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
