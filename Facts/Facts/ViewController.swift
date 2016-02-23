@@ -22,20 +22,24 @@ extension UIColor {
 	}
 }
 
-let fail = UIColor(netHex:0xD33682)
-let fine = UIColor(netHex:0x586E75)
+let fail = UIColor(netHex:0xeee8d5)
+let fine = UIColor(netHex:0x073642)
 
 
 let standardAnswers: [String] = ["Yes",
 	"No",
 	"It is a possibility.",
-	"My view has been shaded, ask again."]
+	"My view has been shaded, ask again.",
+	"42.",
+	"There's a fair chance.",]
 
 func magicEightBallAnswers(question q: String, lastAnser a: Int) -> (String, Int, Bool) {
 	//I'm takin in the last answer to prevent repeats and the question to scan for "love" and "death"
 	var answerID: Int
 	if q.lowercaseString.rangeOfString("love") != nil || q.lowercaseString.rangeOfString("luv") != nil || q.lowercaseString.rangeOfString("die") != nil || q.lowercaseString.rangeOfString("death") != nil || q.lowercaseString.rangeOfString("not like me") != nil {
 		return ("I speak not in terms of love or death.", -1, true)
+	} else if q.rangeOfString("?") == nil || q.isEmpty == true {
+		return ("Ask me a question mortal!", -1, true)
 	}
 	repeat {
 		answerID = Int(arc4random_uniform(UInt32(standardAnswers.count)))
@@ -56,6 +60,7 @@ class ViewController: UIViewController {
 
 	@IBOutlet weak var eightBallResponse: UILabel!
 	@IBOutlet weak var eightBallQuestion: UITextField! = nil
+	var lastAnswer:Int = -1
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,14 +74,15 @@ class ViewController: UIViewController {
 	
     @IBAction func submitEightBallQuestion() {
 		let question: String
-		if eightBallQuestion == nil{
+		if eightBallQuestion.text != nil{
 			question = eightBallQuestion.text!
 		} else {
 			question = ""
 		}
-		let eightBallTuple = magicEightBallAnswers(question: question, lastAnser: -1)
+		let eightBallTuple = magicEightBallAnswers(question: question, lastAnser: lastAnswer)
 		//eightBallResponse.text, lastAnswer, color
 		eightBallResponse.text = eightBallTuple.0
+		lastAnswer = eightBallTuple.1
 		let changeColor = eightBallTuple.2
 		if changeColor == true{
 			self.view.backgroundColor = fail
