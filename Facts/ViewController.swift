@@ -21,7 +21,7 @@ extension UIColor {
 		self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
 	}
 }
-
+//Code from somebody
 let fail = UIColor(netHex:0xeee8d5)
 let fine = UIColor(netHex:0x073642)
 
