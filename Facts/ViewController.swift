@@ -35,12 +35,32 @@ func ~= (input: String, matching: String) -> Bool {
 	return false
 }
 
-let standardAnswers: [String] = ["Yes",
+let answers: [String] = ["Yes",
 	"No",
 	"It is a possibility.",
 	"My view has been shaded, ask again.",
 	"42.",
-	"There's a fair chance."]
+	"There's a fair chance."
+]
+
+let responses: [[String]] = [
+	["love|luv", "I do not speak in terms of love."],
+	["die|death", "I do not speak in terms of death."]
+]
+
+func hasSpecialAnswer(question: String, responses: [[String]]) -> String {
+	
+	for r in responses {
+		let regex = r[0]
+		
+		if question ~= regex {
+			return r[1]
+		}
+	}
+	
+	return ""
+	
+}
 
 func magicEightBallAnswers(question q: String, lastAnser a: Int) -> (String, Int, Bool) {
 	//I'm takin in the last answer to prevent repeats and the question to scan for "love" and "death"
@@ -56,16 +76,16 @@ func magicEightBallAnswers(question q: String, lastAnser a: Int) -> (String, Int
 	}
     
 	repeat {
-		answerID = Int(arc4random_uniform(UInt32(standardAnswers.count)))
+		answerID = Int(arc4random_uniform(UInt32(answers.count)))
 	} while answerID == a
 	//So this is a sh*tton of code, let's disect it:
 		/* We create a variable called answerID.
-		 * We count the items in standardAnswers.
-		 * We generate a number between 0 and the items in standardAnswers minus one
-		 * We do that until the answer of standardAnswers isn't a, the last answer.
+		 * We count the items in answers.
+		 * We generate a number between 0 and the items in answers minus one
+		 * We do that until the answer of answers isn't a, the last answer.
 		 * We assign that number to an int of answerID.
 		 */
-	let response: String = standardAnswers[answerID]
+	let response: String = answers[answerID]
 	//I'm returning an answer (string) the item in the array it is from (int) and wether the question had love or death in it (bool) If the bool was true, -1 will be returned to represent an "error".
 	return (response, answerID, false)
 }
